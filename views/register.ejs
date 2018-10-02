@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <h1 align="center">OLX 2</h1>
+  <h1 align="center">OLX</h1>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,21 +28,21 @@
   </div>
 </nav>
 <br>
-<form>
+<form action="/users/register/" method="post">
 <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" class="form-control" id="exampleInputUsername"  placeholder="Enter Username">
+    <label for="exampleInput">Username</label>
+    <input type="text" class="form-control" id="exampleInputUsername" name="username" placeholder="Enter Username">
     
   </div>
 
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email">
     
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
   </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
