@@ -24,17 +24,16 @@ function login(req,res){
 		var password = req.body.password;
 		
 		console.log(req.body);
-		var newUser = new User({
-			
-			email: email,
-			password: password,
-		});
-		User.createUser(newUser, function(err,user){
+		User.findOne({email:email,password:password},function(err,user){
 			if(err){ 
 				throw(err);
 			}
-			console.log(user);
-		}); 
+			else
+			{
+				res.redirect('/dashboard');
+			}
+		});
+		
 
 		
 		
@@ -89,7 +88,7 @@ function register(req,res){
 router.post('/register',register);
 
 
-passport.use(new LocalStrategy(
+/*passport.use(new LocalStrategy(
   function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
     	if(err) throw err;
@@ -126,5 +125,6 @@ router.post('/login',
   function(req, res) {
     
   });
+  */
 
 module.exports = router;
