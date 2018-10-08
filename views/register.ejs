@@ -3,6 +3,8 @@
 <title>Welcome</title>
 <link rel="stylesheet" href="/stylesheets/bootstrap.css">
 <link rel="stylesheet" href="/stylesheets/style.css">
+
+
 </head>
 <body>
 
@@ -28,6 +30,13 @@
   </div>
 </nav>
 <br>
+
+<% if (message.length > 0) { %>
+        <div class="alert alert-success"><%= message %></div>
+    <% } %>
+
+
+
 <form action="/users/register/" method="post">
 <div class="form-group">
     <label for="exampleInput">Username</label>
@@ -45,7 +54,28 @@
     <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
   </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+  
+
+<script language="javascript">
+    function UpdateConfirm() {
+               var userPreference;
+               if (confirm("You have successfully registered....Login now?") == true) {
+               return true;} 
+               else {
+               return false;}
+
+               }
+    </script>
+      <button type="submit" class="btn btn-info" name="change" value="ok" onClick= "<%- "return UpdateConfirm()" %>" > Submit </button>
+
+<% if (locals.messages) { %>
+
+    <script language="javascript">
+    alert("<%= messages.msg %>");
+    </script>
+
+        <% } %>
+
 </form>
 </body>
 </html>

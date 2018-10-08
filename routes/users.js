@@ -37,7 +37,7 @@ function login(req,res){
 		}); 
 
 		
-		res.redirect('/');
+		
 
 		
 
@@ -71,6 +71,8 @@ function register(req,res){
 			}
 			console.log(user);
 		}); 
+
+		req.flash('success_msg','You are now registered and can login now!!!');
 
 		
 		res.redirect('/');
@@ -120,9 +122,9 @@ passport.deserializeUser(function (id, done) {
 
 
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'register', failureRedirect:'/',failureFlash: true}),
   function(req, res) {
-    res.redirect('/');
+    
   });
 
 module.exports = router;

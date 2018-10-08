@@ -45,6 +45,8 @@ app.use(session({
 }));
 
 
+app.use(flash());
+
 //passport
 
 app.use(passport.initialize());
