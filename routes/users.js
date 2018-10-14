@@ -1,5 +1,105 @@
 var express = require('express');
 var router = express.Router();
+var User =require('../models/user');
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+  res.send('respond with a resource');
+});
+
+async function login(req,res){
+	try{
+		var username=req.body.username;
+		var password=req.body.password;
+		console.log(req.body);
+		var user = await User.findOne({username:username,password:password});
+		if(!user){
+			res.send({
+				status:false,
+				msg:"Sorry, You are Wrong"
+			});
+		}else{
+			res.send({
+				status:true,
+				msg: "login success"
+			});
+		}
+	}
+	catch(e){
+		res.send({
+			status:false,
+			msg: "login failed"
+		});
+	}
+}
+
+router.post('/login',login);
+
+async function register(req,res){
+	try{
+		//var name=req.body.name;
+		//var email=req.body.email;
+		var username=req.body.username;
+		var password=req.body.password;
+
+		console.log(req.body);
+
+		var newUser =new User({
+			//name:name,
+			//email:email,
+			username:username,
+			password:password,
+		});
+
+		var user = await newUser.save();
+		if(user === null){
+			res.send({
+				status:false,
+				msg: "Registration failed"
+			});
+		}else{
+			res.send({
+				status:true,
+				msg: "Registration success"
+			});
+		}
+		// User.createUser(newUser,function(err,user){
+		// 	if(err){
+		// 		throw(err);
+		// 	}
+		// 	console.log(user);
+		// });
+		
+			// res.redirect('/');
+		}
+		catch(e){
+			res.send({
+				status:false,
+				msg: "Registration failed"
+			});
+		}
+		
+}
+
+ router.post('/register',register);
+
+ async function getalluser(req,res){
+	 var data = await User.find({});
+	 res.send({
+		 status:true,
+		 data:data
+	 });
+ }
+
+ router.get('/all',getalluser);
+
+module.exports = router;
+
+
+
+
+
+/*var express = require('express');
+var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
@@ -8,7 +108,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
 
-/* GET users listing. */
+
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
@@ -26,11 +126,30 @@ function login(req,res){
 		console.log(req.body);
 		User.findOne({email:email,password:password},function(err,user){
 			if(err){ 
-				throw(err);
+				res.send({
+			status:false,
+			msg : "login failed"
+		});
+				
 			}
-			else
+			if(!user)
 			{
-				res.redirect('/dashboard');
+				
+            res.send({
+			status:failed,
+			msg : "login failed"
+		});
+
+
+
+			}
+			
+			else{
+				
+            res.send({
+			status:true,
+			msg : "login success"
+		});
 			}
 		});
 		
@@ -125,6 +244,7 @@ router.post('/login',
   function(req, res) {
     
   });
-  */
+  
 
 module.exports = router;
+*/

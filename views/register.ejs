@@ -1,4 +1,175 @@
-<html>
+
+<html lang="en">
+    <head>
+      <title>OLX</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+    </head>
+     
+    <body>
+
+<h1 align="center">OLX</h1>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/register/">Register<span class="sr-only">(current)</span></a>
+      </li>
+      
+      
+    </ul>
+    
+  </div>
+</nav>
+<br>
+
+
+
+
+    <!--<div class="container">--> 
+    <div class="col-sm-8">
+      <h3>OLX---Register Form</h3>
+      <br>
+      <div>   
+        <form id="customerForm">
+          <!--<div class="form-group">
+          <label for="firstname">Username:</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter FirstName"/>
+          </div>-->
+          <div class="form-group">
+    <label for="exampleInputEmail1">Username:</label>
+    <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username" required="">
+    
+  </div>
+
+
+
+          <!--<div class="form-group">
+          <label for="lastname">Password:</label>
+          <input type="text" class="form-control" id="password" placeholder="Enter LastName"/>
+          </div>-->
+          <div class="form-group">
+    <label for="exampleInputEmail1">Password</label>
+    <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password" required="">
+    
+  </div>
+          <!--<button type="submit" class="btn btn-default">Submit</button>-->
+          <button type="submit" class="btn btn-info"> Submit </button>
+        </form>
+      </div>
+      <div id="postResultDiv">
+      </div>
+      <br>
+      <!--<div>
+        <button id="allCustomers" type="button" class="btn btn-default">Customers</button>
+        <div id="getResultDiv">
+              <ul class="list-group">
+            </ul>
+          </div>
+      </div>-->
+    <!--</div>-->  
+    </div>
+    </body>
+    </html>
+
+    <script>
+$( document ).ready(function() {
+  
+  // SUBMIT FORM
+    $("#customerForm").submit(function(event) {
+    // Prevent the form from submitting via the browser.
+    event.preventDefault();
+    ajaxPost();
+  });
+    
+    
+    function ajaxPost(){
+      
+      // PREPARE FORM DATA
+      var formData = {
+        username : $("#username").val(),
+        password :  $("#password").val()
+      }
+      
+      // DO POST
+      $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : "localhost:3000/users/register",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      success : function(response) {
+        $("#postResultDiv").html("<p>" + 
+          "Post Successfully! <br>" +
+          "--->" + JSON.stringify(response)+ "</p>");
+          if (response.status === true) {
+              alert("You will now be redirected.");
+              // window.location = "//www.aspsnippets.com/";
+              window.setTimeout(function () {
+                location.href = "/register";
+              },1000);
+          }else{
+            location.href = "/";
+          }
+      },
+      error : function(e) {
+        alert("Error!")
+        console.log("ERROR: ", e);
+      }
+    });
+      
+      // Reset FormData after Posting
+     // resetData();
+    }
+    
+    /*function resetData(){
+      $("#username").val("");
+      $("#password").val("");
+    }
+    $("#allCustomers").click(function(event){
+    event.preventDefault();
+    ajaxGet();
+  });
+  
+  // DO GET
+  function ajaxGet(){
+    $.ajax({
+      type : "GET",
+      url : "users/all",
+      success: function(result){
+        $('#getResultDiv ul').empty();
+        var custList = "";
+        $.each(result, function(i, customer){
+          $('#getResultDiv .list-group').append(data.username + " " + customer.password + "<br>")
+        });
+        console.log("Success: ", result);
+      },
+      error : function(e) {
+        $("#getResultDiv").html("<strong>Error</strong>");
+        console.log("ERROR: ", e);
+      }
+    }); 
+  }*/
+})
+    </script>
+
+
+
+<!--<html>
 <head>
 <title>Welcome</title>
 <link rel="stylesheet" href="/stylesheets/bootstrap.css">
@@ -76,4 +247,4 @@
 
 </form>
 </body>
-</html>
+</html>-->
