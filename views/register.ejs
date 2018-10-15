@@ -49,8 +49,8 @@
 </body>
 </html>
 <script>
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     var data = {
       username: $("#username").val(),
       password: $("#password").val()
@@ -63,14 +63,11 @@
       success: function (response) {
         if (response.status === true) {
           alert("Registration Success");
-        } else {
-          location.href = "/";
+        } 
+        else {
+          alert("Failed")
         }
       },
-      error: function (e) {
-        alert("Error!")
-        console.log("ERROR: ", e);
-      }
     });
   }
 </script>
