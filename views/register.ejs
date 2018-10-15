@@ -117,13 +117,13 @@ $( document ).ready(function() {
           "Success!! <br>" +
           "--->" + JSON.stringify(response)+ "</p>");
           if (response.status === true) {
-              alert("You will now be redirected.");
+              alert("You are successfully registered!!");
               // window.location = "//www.aspsnippets.com/";
               window.setTimeout(function () {
-                location.href = "/register";
+                location.href = "/";
               },1000);
           }else{
-            location.href = "/";
+            location.href = "/register";
           }
       },
       error : function(e) {

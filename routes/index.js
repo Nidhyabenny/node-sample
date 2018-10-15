@@ -10,6 +10,10 @@ router.get('/register', function(req, res, next) {
   res.render('register');
 });
 
+router.get('/dashboard', function(req, res, next) {
+  res.render('dashboard');
+});
+
 
 
 module.exports = router;
