@@ -28,8 +28,8 @@ var UserSchema =mongoose.Schema({
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
-
-/*	title: {
+var Schema =mongoose.Schema({
+title: {
 		type: String,
 		index: true
 	},
@@ -51,12 +51,10 @@ var User = module.exports = mongoose.model('User', UserSchema);
 	address2: {
 		type: String
 	}
-	
-
-	
 });
 
-var user = module.exports= mongoose.model('product', Schema);*/
+
+var user = module.exports= mongoose.model('products', Schema);
 
 module.exports.createUser=function(newUser, callback){
 	newUser.save(callback);

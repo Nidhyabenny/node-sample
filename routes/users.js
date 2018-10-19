@@ -49,7 +49,7 @@ async function register(req,res){
 			username:username,
 			password:password,
 		});
-
+                                                                                         
 		var user = await newUser.save();
 		if(user === null){
 			res.send({
@@ -131,7 +131,7 @@ async function dashboard(req,res){
 		var newUser =new user({
 			//name:name,
 			//email:email,
-			title:title,
+		title:title,
 		category:category,
 		description:description,
 		name:name,
@@ -141,18 +141,15 @@ async function dashboard(req,res){
 			
 		});
 
-		var user = await newUser.save();
-		if(user === null){
-			res.send({
-				status:false,
-				msg: "submit failed"
-			});
-		}else{
+		newUser.save();
+		
 			res.send({
 				status:true,
 				msg: "submit success"
 			});
-		}
+		
+			
+		
 		// User.createUser(newUser,function(err,user){
 		// 	if(err){
 		// 		throw(err);
