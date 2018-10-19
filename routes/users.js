@@ -82,6 +82,103 @@ async function register(req,res){
 
  router.post('/register',register);
 
+
+ /*async function dashboard(req,res){
+ 	
+	new user({
+		title: req.body.title,
+		category: req.body.category,
+		description: req.body.description,
+		name: req.body.name,
+		contact: req.body.contact,
+		address: req.body.address,
+		address2: req.body.address2
+}).save(function(err,doc){
+	if(err){
+		res.send({
+				status:false,
+				msg: "submit failed"
+			});
+	}
+	else {
+		res.send({
+				status:true,
+				msg: "submitted"
+			});
+	}
+});
+
+	};
+	
+router.post('/dashboard',dashboard);
+	
+		
+*/
+async function dashboard(req,res){
+	try{
+		//var name=req.body.name;
+		//var email=req.body.email;
+		var title= req.body.title;
+		var category=req.body.category;
+		var description= req.body.description;
+		var name= req.body.name;
+		var contact= req.body.contact;
+		var address= req.body.address;
+		var address2= req.body.address2;
+
+		console.log(req.body);
+
+		var newUser =new user({
+			//name:name,
+			//email:email,
+			title:title,
+		category:category,
+		description:description,
+		name:name,
+		contact:contact,
+		address:address,
+		address2:address2
+			
+		});
+
+		var user = await newUser.save();
+		if(user === null){
+			res.send({
+				status:false,
+				msg: "submit failed"
+			});
+		}else{
+			res.send({
+				status:true,
+				msg: "submit success"
+			});
+		}
+		// User.createUser(newUser,function(err,user){
+		// 	if(err){
+		// 		throw(err);
+		// 	}
+		// 	console.log(user);
+		// });
+		
+			// res.redirect('/');
+		}
+		catch(e){
+			res.send({
+				status:false,
+				msg: "submit failed"
+			});
+		}
+		
+}
+
+ router.post('/dashboard',dashboard);
+
+
+
+		
+
+
+
  async function getalluser(req,res){
 	 var data = await User.find({});
 	 res.send({

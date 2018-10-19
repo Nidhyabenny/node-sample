@@ -1,5 +1,5 @@
-
 <html lang="en">
+<!--<<<<<<< HEAD
     <head>
       <title>OLX</title>
       <meta charset="utf-8">
@@ -40,21 +40,21 @@
 
 
 
-    <!--<div class="container">--> 
-    <div class="col-sm-8">
-      <h3>OLX---Register Form</h3>
+    <!<div class="container">--> 
+    <!--<div class="col-sm-8">
+      <h3>OLX-Register Form</h3>
       <br>
       <div>   
         <form id="customerForm">
-          <!--<div class="form-group">
+          <!<div class="form-group">
           <label for="firstname">Username:</label>
           <input type="text" class="form-control" id="username" placeholder="Enter FirstName"/>
           </div>-->
-          <div class="form-group">
+          <!--<div class="form-group">
     <label for="exampleInputEmail1">Username:</label>
     <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username" required="">
     
-  </div>
+  </div>-->
 
 
 
@@ -62,18 +62,18 @@
           <label for="lastname">Password:</label>
           <input type="text" class="form-control" id="password" placeholder="Enter LastName"/>
           </div>-->
-          <div class="form-group">
+          <!--<div class="form-group">
     <label for="exampleInputEmail1">Password</label>
     <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password" required="">
     
-  </div>
+  </div>-->
           <!--<button type="submit" class="btn btn-default">Submit</button>-->
-          <button type="submit" class="btn btn-info"> Submit </button>
+          <!--<button type="submit" class="btn btn-info"> Submit </button>
         </form>
       </div>
       <div id="postResultDiv">
       </div>
-      <br>
+      <br>-->
       <!--<div>
         <button id="allCustomers" type="button" class="btn btn-default">Customers</button>
         <div id="getResultDiv">
@@ -82,11 +82,11 @@
           </div>
       </div>-->
     <!--</div>-->  
-    </div>
+    <!--</div>
     </body>
-    </html>
+    </html>-->
 
-    <script>
+    <!--<script>
 $( document ).ready(function() {
   
   // SUBMIT FORM
@@ -115,7 +115,7 @@ $( document ).ready(function() {
       success : function(response) {
         $("#postResultDiv").html("<p>" + 
           "Success!! <br>" +
-          "--->" + JSON.stringify(response)+ "</p>");
+          "->" + JSON.stringify(response)+ "</p>");
           if (response.status === true) {
               alert("You are successfully registered!!");
               // window.location = "//www.aspsnippets.com/";
@@ -168,83 +168,95 @@ $( document ).ready(function() {
     </script>
 
 
+=======
+>>>>>>> 953494205c10685f6b93be0b2c6f358a0ad01de8-->
 
-<!--<html>
 <head>
-<title>Welcome</title>
-<link rel="stylesheet" href="/stylesheets/bootstrap.css">
-<link rel="stylesheet" href="/stylesheets/style.css">
+  <title>OLX</title>
+  <style>
+    img
+    {
+      border-radius: 50%;
+      float: left;
+      margin-top: 45px;
+      margin-bottom: 10px;
 
-
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 </head>
 <body>
-
-  <h1 align="center">OLX</h1>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Login <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-      
-      
-    </ul>
-    
+  <img src="/images/olx.jpg" alt="icon"  style="width: 200px">
+  <h3 style="padding-top: 60px;">India's Largest Marketplace</h3>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center mb-5">Registration Form</h2>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card border-secondary">
+            <div class="card-header">
+              <h3 class="mb-0 my-2">Sign Up</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" role="form" autocomplete="off" method="POST" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                  <label for="inputName">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="password" required="">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success float-right">Register</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/row-->
+    </div>
+    <!--/col-->
   </div>
-</nav>
-<br>
-
-
-
-
-
-<form action="/users/register/" method="post">
-<div class="form-group">
-    <label for="exampleInput">Username</label>
-    <input type="text" class="form-control" id="exampleInputUsername" name="username" placeholder="Enter Username" required="">
-    
-  </div>
-
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required="">
-    
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
-  </div>
-  
-  
-
-<script language="javascript">
-    function UpdateConfirm() {
-               var userPreference;
-               if (confirm("You have successfully registered....Login now?") == true) {
-               return true;} 
-               else {
-               return false;}
-
-               }
-    </script>
-      <button type="submit" class="btn btn-info" name="change" value="ok" onClick= "<%- "return UpdateConfirm()" %>" > Submit </button>
-
-<% if (locals.messages) { %>
-
-    <script language="javascript">
-    alert("<%= messages.msg %>");
-    </script>
-
-        <% } %>
-
-</form>
+  <!--/row-->
+</div>
+<!--/container-->
 </body>
-</html>-->
+</html>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    var data = {
+      username: $("#username").val(),
+      password: $("#password").val()
+    }
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/users/register",
+      data: data,
+      dataType: 'json',
+      success: function (response) {
+        if (response.status === true) {
+          alert("Registration Success");
+          window.setTimeout(function () {
+                location.href = "/";
+              },1000);
+        } 
+        else {
+          alert("Failed");
+          window.setTimeout(function () {
+                location.href = "/register";
+              },1000);
+        }
+      },
+    });
+  }
+</script>

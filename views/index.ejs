@@ -1,5 +1,5 @@
 <html lang="en">
-    <head>
+    <!--<head>
       <title>OLX</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,22 +34,22 @@
     
   </div>
 </nav>
-<br>
+<br>-->
 
 
 
 
     <!--<div class="container">--> 
-    <div class="col-sm-8">
-      <h3>OLX---Login Form</h3>
+    <!--<div class="col-sm-8">
+      <h3>OLX-Login Form</h3>
       <br>
       <div>   
         <form id="customerForm">
-          <!--<div class="form-group">
+          <!<div class="form-group">
           <label for="firstname">Username:</label>
           <input type="text" class="form-control" id="username" placeholder="Enter FirstName"/>
           </div>-->
-          <div class="form-group">
+          <!--<div class="form-group">
     <label for="exampleInputEmail1">Username:</label>
     <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" placeholder="Username" required="">
     
@@ -57,22 +57,22 @@
 
 
 
-          <!--<div class="form-group">
+          <!<div class="form-group">
           <label for="lastname">Password:</label>
           <input type="text" class="form-control" id="password" placeholder="Enter LastName"/>
           </div>-->
-          <div class="form-group">
+          <!--<div class="form-group">
     <label for="exampleInputEmail1">Password</label>
     <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" placeholder="Password" required="">
     
-  </div>
+  </div>-->
           <!--<button type="submit" class="btn btn-default">Submit</button>-->
-          <button type="submit" class="btn btn-info"> Submit </button>
+          <!--<button type="submit" class="btn btn-info"> Submit </button>
         </form>
       </div>
       <div id="postResultDiv">
       </div>
-      <br>
+      <br>-->
       <!--<div>
         <button id="allCustomers" type="button" class="btn btn-default">Customers</button>
         <div id="getResultDiv">
@@ -81,7 +81,7 @@
           </div>
       </div>-->
     <!--</div>-->  
-    </div>
+   <!-- </div>
     </body>
     </html>
 
@@ -113,8 +113,8 @@ $( document ).ready(function() {
       dataType : 'json',
       success : function(response) {
         $("#postResultDiv").html("<p>" + 
-          " Success!! <br>" +
-          "--->" + JSON.stringify(response)+ "</p>");
+          " Success!! <br>" +         
+          "->" + JSON.stringify(response)+ "</p>");
           if (response.status === true) {
               alert("You will now be redirected.");
               // window.location = "//www.aspsnippets.com/";
@@ -164,7 +164,7 @@ $( document ).ready(function() {
     }); 
   }*/
 })
-    </script>
+    </script>-->
 
 
 
@@ -270,3 +270,97 @@ $( document ).ready(function() {
 
 </body>
 </html>-->
+
+
+<head>
+  <title>OLX</title>
+  <style>
+    img
+    {
+      border-radius: 50%;
+      float: left;
+      margin-top: 45px;
+      margin-bottom: 10px;
+
+    }
+  </style>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</head>
+<body>
+  <img src="/images/olx.jpg" alt="icon"  style="width: 200px">
+  <h3 style="padding-top: 60px;">India's Largest Marketplace</h3>
+  
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="text-center mb-5">Login Form</h2>
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card border-secondary">
+            <div class="card-header">
+              <h3 class="mb-0 my-2">Login</h3>
+            </div>
+            <div class="card-body">
+              <form class="form" role="form" autocomplete="off" method="POST" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                  <label for="inputName">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="password" required="">
+                </div>
+                <div class="form-group">
+                  <a href="/register" class="btn btn-success float-right">Don't have an account?</a>
+                  <button type="submit" class="btn btn-success float-left">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/row-->
+    </div>
+    <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->
+</body>
+</html>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    var data = {
+      username: $("#username").val(),
+      password: $("#password").val()
+    }
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/users/login",
+      data: data,
+      dataType: 'json',
+      success: function (response) {
+        if (response.status === true) {
+          alert("Login Success");
+          window.setTimeout(function () {
+                location.href = "/home";
+              },1000);
+        } 
+        else {
+          alert("Failed");
+          window.setTimeout(function () {
+                location.href = "/register";
+              },1000);
+        }
+      },
+    });
+  }
+</script>

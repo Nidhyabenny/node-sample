@@ -16,12 +16,47 @@ var UserSchema =mongoose.Schema({
 	email: {
 		type: String
 	}
+
 	
 
 	
 });
 
+
+
+
+
 var User = module.exports = mongoose.model('User', UserSchema);
+
+
+/*	title: {
+		type: String,
+		index: true
+	},
+	description: {
+		type: String
+	},
+	category: {
+		type: String
+	},
+	name: {
+		type: String
+	},
+	contact: {
+		type: String
+	},
+	address: {
+		type: String
+	},
+	address2: {
+		type: String
+	}
+	
+
+	
+});
+
+var user = module.exports= mongoose.model('product', Schema);*/
 
 module.exports.createUser=function(newUser, callback){
 	newUser.save(callback);
